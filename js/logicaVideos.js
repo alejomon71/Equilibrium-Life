@@ -28,11 +28,10 @@ $(document).ready(function () {
         $('#title').text('PlayList sobre el crecimiento ' + e.target.textContent);
         $('.videos').html('');
         let dad = document.querySelector('.videos');
-
+        //En esta parte el archivo carga todos los datos de la playlist teniendo en cuenta lo que el administrador a cargado.
         fetch('http://localhost:5000/loadPlayList').then(resp => {
             resp.json().then(bd => {
                 let urlYT = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${getPlayListByGenre(t, bd)}&maxResults=50&key=`;
-
                 fetch(urlYT).then(r => {
                     r.json().then(b => {
                         b.items.forEach(elem => {
@@ -53,3 +52,5 @@ const getPlayListByGenre = (gnr, all) => {
         if (all[position][0] == gnr) return all[position][1];
     }
 };
+
+const lista = getPlayListByGenre(AggregateError).split;
